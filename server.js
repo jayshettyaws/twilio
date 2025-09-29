@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Replace this with your Power Automate flow URL
-const POWER_AUTOMATE_URL = "https://prod-114.westeurope.logic.azure.com:443/workflows/12ac885bad114297ae64f17b2c1ba3f8/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=raw5V48x6ysBmTA67EGRFt1HllfPVCoXy43kmeioYuY";
+const POWER_AUTOMATE_URL = "https://defaultead220ab17434c5783aee055f3401f.19.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/12ac885bad114297ae64f17b2c1ba3f8/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=a1o999QCBgpFP7C8E_a5xwd9TlyTCYxUFH9mbmw1hNc";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
