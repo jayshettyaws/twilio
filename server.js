@@ -12,9 +12,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/webhook", async (req, res) => {
     try {
-        console.log("Received from Twilio:", req.body);
+        console.log("Received from Twilio (body):", req.body);
+        console.log("Received query params:", req.query); // 👈 Add this
 
-        const response = await axios.post(POWER_AUTOMATE_URL, req.body, {
+        // Merge Twilio POST body + your custom query params
+        const mergedData = {
+            ...req.body,
+            ...req.query,   // 👈 this adds casenumber and any other custom vars
+        };
+
+        const response = await axios.post(POWER_AUTOMATE_URL, mergedData, {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             }
@@ -27,6 +34,7 @@ app.post("/webhook", async (req, res) => {
         res.status(500).send("Forwarding failed");
     }
 });
+
 
 app.get("/", (req, res) => {
     res.send("Twilio → Power Automate Relay is running.");
